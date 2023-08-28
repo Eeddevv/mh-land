@@ -4,12 +4,12 @@ const navigation = document.querySelector("header");
 document.body.classList.toggle("lock");
 
 let isMenu = false;
-console.log(menu);
 
 menu.addEventListener("click", () => {
   navigation.classList.toggle("active");
   document.body.classList.toggle("lock");
   isMenu = !isMenu;
+  console.log(isMenu);
 });
 
 const anim = document.querySelectorAll(".right-element li");
@@ -88,24 +88,33 @@ currentItem = 0;
 currentWidth = 0;
 
 const nav = document.querySelectorAll(".top-navigation ul li");
+const countCost = document.querySelector(".main .button-group div a")
 
 const scrollSelectors = [];
 
-scrollSelectors[0] = document.querySelector(".main");
-scrollSelectors[1] = document.querySelector(".we-offer");
-scrollSelectors[2] = document.querySelector(".delivery-pay");
-scrollSelectors[3] = document.querySelector(".faq");
+scrollSelectors[0] = document.querySelector(".calculate-cost");
+scrollSelectors[1] = document.querySelector(".delivery-pay");
+scrollSelectors[2] = document.querySelector(".faq");
+scrollSelectors[3] = document.querySelector(".calculate-cost")
 
 for (let i = 0; i < nav.length; i++) {
   nav[i].addEventListener("click", () => {
     if (isMenu) {
       navigation.classList.toggle("active");
       document.body.classList.toggle("lock");
+      isMenu = !isMenu;
     }
     scrollSelectors[i].scrollIntoView({ behavior: "smooth" });
   });
 }
-
+countCost.addEventListener("click", () => {
+  if (isMenu) {
+    navigation.classList.toggle("active");
+    document.body.classList.toggle("lock");
+    isMenu = !isMenu;
+  }
+  scrollSelectors[3].scrollIntoView({ behavior: "smooth" });
+});
 /////
 // get our elements
 const slider = document.querySelector(".slider-line"),
@@ -166,6 +175,7 @@ function pointerDown(index) {
     isDragging = true;
     animationID = requestAnimationFrame(animation);
     slider.classList.add("grabbing");
+    slider.style.cursor = "grabbing";
   };
 }
 
@@ -190,6 +200,8 @@ function pointerUp() {
   setPositionByIndex();
 
   slider.classList.remove("grabbing");
+
+  slider.style.cursor = "grab";
 }
 
 function animation() {

@@ -1,4 +1,8 @@
 @import "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;900&family=Montserrat:wght@700&display=swap";
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: #1f1f1f;
   color: white;
@@ -26,13 +30,15 @@ body > section header .menu {
   z-index: 11;
   cursor: pointer;
 }
-body > section header .menu::after, body > section header .menu::before,
+body > section header .menu::after,
+body > section header .menu::before,
 body > section header .menu span {
   position: absolute;
   left: 0;
   width: 100%;
   height: 1.5px;
   background-color: #828282;
+  transition: all 0.5s ease;
 }
 body > section header .menu::before {
   content: "";
@@ -86,6 +92,7 @@ body > section header.active .top-navigation ul li {
 }
 body > section header.active .menu {
   cursor: pointer;
+  transition: all 0.5s ease;
 }
 body > section header.active .menu span {
   transition: all 0.5s ease;
@@ -127,7 +134,7 @@ body > section .main > div {
   height: -moz-fit-content;
   height: fit-content;
   margin: auto 0;
-  width: 50%;
+  width: 60%;
 }
 body > section .main h1 {
   font-size: 52px;
@@ -155,13 +162,12 @@ body > section .main .button-group button {
   color: #2ab8fa;
   padding: 16px 29px;
   border: 1px solid #2ab8fa;
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease;
 }
 body > section .main .button-group button:hover {
-  transform: scale(1.05);
-  background: white;
+  background: #2ab8fa;
   border: 1px solid transparent;
-  color: #171717;
+  color: white;
 }
 body > section .main .button-group > div {
   margin-left: 24px;
@@ -174,11 +180,14 @@ body > section .main .button-group > div a {
 body > section .main .button-group > div a span,
 body > section .main .button-group > div a svg {
   color: white;
-  transition: color 0.4s ease;
+  transition: all 0.4s ease;
 }
 body > section .main .button-group > div a:hover span,
 body > section .main .button-group > div a:hover svg {
   color: #2ab8fa;
+}
+body > section .main .button-group > div a:hover svg {
+  margin-left: 7px;
 }
 body > section .main .img {
   position: absolute;
@@ -255,8 +264,8 @@ body > section .choise-product section .slider {
   display: flex;
   overflow: hidden;
   -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
+  -moz-user-select: none;
+  user-select: none;
   touch-action: pan-y;
 }
 body > section .choise-product section .slider button {
@@ -309,7 +318,14 @@ body > section .choise-product section .slider .slider-item .img-group {
   display: flex;
   align-items: center;
 }
-body > section .choise-product section .slider .slider-item .img-group img:first-child {
+body
+  > section
+  .choise-product
+  section
+  .slider
+  .slider-item
+  .img-group
+  img:first-child {
   position: absolute;
   display: block;
   max-width: 220px;
@@ -319,7 +335,14 @@ body > section .choise-product section .slider .slider-item .img-group img:first
   left: 100px;
   z-index: 2;
 }
-body > section .choise-product section .slider .slider-item .img-group img:last-child {
+body
+  > section
+  .choise-product
+  section
+  .slider
+  .slider-item
+  .img-group
+  img:last-child {
   position: absolute;
   display: block;
   max-width: 180px;
@@ -379,18 +402,29 @@ body > section .calculate-cost section .cost {
   display: flex;
   align-items: center;
 }
-body > section .calculate-cost section .cost span {
+body > section .calculate-cost section .cost > span {
   font-size: 50px;
   font-weight: 500;
 }
 body > section .calculate-cost section .cost a {
+  display: flex;
+  align-items: center;
   color: #2ab8fa;
+  margin-left: 24px;
+}
+body > section .calculate-cost section .cost a span {
   font-size: 18px;
   font-weight: 600;
-  margin-left: 24px;
 }
 body > section .calculate-cost section .cost div {
   display: flex;
+  color: #2ab8fa;
+}
+body > section .calculate-cost section .cost div svg {
+  transition: all 0.4s ease;
+}
+body > section .calculate-cost section .cost div:hover svg {
+  margin-left: 7px;
 }
 body > section .calculate-cost section .flacon-back {
   position: absolute;
@@ -400,7 +434,7 @@ body > section .calculate-cost section .flacon-back {
   right: 0;
 }
 body > section .faq {
-  margin: 120px 0 200px 0;
+  margin: 120px 0 80px 0;
 }
 body > section .faq section {
   margin-top: 60px;
@@ -441,12 +475,15 @@ body > section .faq section .right-element .accordion-active {
   color: #2ab8fa;
   font-weight: 400;
 }
+body > section .faq section .right-element .accordion-active div:hover {
+  color: #2ab8fa;
+}
 body > section .faq section .right-element ul li > div {
   cursor: pointer;
   transition: all 0.4s ease;
 }
 body > section .faq section .right-element ul li > div:hover {
-  color: #2ab8fa;
+  color: #61c6f6;
 }
 body footer {
   background-color: #171717;
@@ -532,6 +569,14 @@ body footer section .bottom p {
   font-size: 18px;
   font-weight: 400;
   line-height: 140%;
+}
+body footer section .bottom svg {
+  margin-right: 20px;
+  transition: all 0.4s ease;
+  color: #484848;
+}
+body footer section .bottom svg:hover {
+  color: #2ab8fa;
 }
 body .line {
   height: 1px;
@@ -730,14 +775,28 @@ body .mask .loader {
     text-align: center;
     height: 300px;
   }
-  body > section .choise-product section .slider .slider-item .img-group img:first-child {
+  body
+    > section
+    .choise-product
+    section
+    .slider
+    .slider-item
+    .img-group
+    img:first-child {
     position: static;
     margin: auto;
     transform: translateX(15%);
     max-width: 128px;
     max-height: 309px;
   }
-  body > section .choise-product section .slider .slider-item .img-group img:last-child {
+  body
+    > section
+    .choise-product
+    section
+    .slider
+    .slider-item
+    .img-group
+    img:last-child {
     left: calc(50% - 90px);
     max-width: 110px;
     max-height: 264px;
@@ -845,4 +904,4 @@ body .mask .loader {
   body footer section .bottom p {
     margin-top: 40px;
   }
-}/*# sourceMappingURL=hub.css.map */
+} /*# sourceMappingURL=hub.css.map */
