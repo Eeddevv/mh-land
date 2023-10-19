@@ -5,13 +5,6 @@ document.body.classList.toggle("lock");
 
 let isMenu = false;
 
-menu.addEventListener("click", () => {
-  navigation.classList.toggle("active");
-  document.body.classList.toggle("lock");
-  isMenu = !isMenu;
-  console.log(isMenu);
-});
-
 const anim = document.querySelectorAll(".right-element li");
 const accordion = document.querySelectorAll(".right-element li p");
 const svg = document.querySelectorAll(".right-element li .svg");
@@ -107,14 +100,6 @@ for (let i = 0; i < nav.length; i++) {
     scrollSelectors[i].scrollIntoView({ behavior: "smooth" });
   });
 }
-countCost.addEventListener("click", () => {
-  if (isMenu) {
-    navigation.classList.toggle("active");
-    document.body.classList.toggle("lock");
-    isMenu = !isMenu;
-  }
-  scrollSelectors[3].scrollIntoView({ behavior: "smooth" });
-});
 /////
 // get our elements
 const slider = document.querySelector(".slider-line"),
@@ -156,9 +141,6 @@ function prevSlide() {
   currentIndex--;
   setPositionByIndex();
 }
-
-// make responsive to viewport changes
-window.addEventListener("resize", setPositionByIndex);
 
 // prevent menu popup on long press
 window.oncontextmenu = function (event) {
@@ -209,12 +191,6 @@ function animation() {
   if (isDragging) requestAnimationFrame(animation);
 }
 
-function setPositionByIndex() {
-  currentTranslate =
-    currentIndex * -(slides[0].getBoundingClientRect().width + 40);
-  prevTranslate = currentTranslate;
-  setSliderPosition();
-}
 
 function setSliderPosition() {
   slider.style.transform = `translateX(${currentTranslate}px)`;
